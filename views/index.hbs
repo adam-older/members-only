@@ -1,2 +1,11 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
+
+<dl>
+  {{#each post_list}}
+    <dt>{{this.title}}</dt>
+    <dd>{{this.body}}</dd>
+    <dd>{{this.author.name}}</dd>
+    <dd>{{this.date}}</dd>
+  {{/each}}
+</dl>
