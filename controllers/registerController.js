@@ -1,15 +1,15 @@
 var User = require("../models/user");
 const { body, validationResults } = require("express-validator");
 
-exports.login_get = (req, res, next) => {
+exports.register_get = (req, res, next) => {
   try {
-    res.render("login", {});
+    res.render("register", {});
   } catch (err) {
     next(err);
   }
 };
 
-exports.login_post = [
+exports.register_post = [
   body("email").isEmail().escape().withMessage("Invalid Email"),
   body("password").escape(),
 
@@ -17,13 +17,15 @@ exports.login_post = [
     const errors = validationResults(req);
     if (!errors.isEmpty()) {
       // handle errors
-      res.render("login", { email: req.body.email, errors: errors.array() });
+      res.render("register", { email: req.body.email, errors: errors.array() });
+    } else {
+      // form data is good, log-in user
     }
     try {
       console.log(req.body.email);
       console.log(req.body.password);
 
-      res.redirect("login");
+      res.redirect("register");
     } catch (err) {
       next(err);
     }
