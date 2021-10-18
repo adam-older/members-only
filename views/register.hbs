@@ -1,7 +1,21 @@
 <div class="container">
-  <div><h1>Register:</h1></div>
+  <h1>Register:</h1>
   <div class="input-label" Login>
     <form method="POST" action="">
+      <div class="form-floating mb-3">
+        <input
+          class="form-control"
+          id="username"
+          name="username"
+          placeholder="name@example.com"
+          {{#if username}}
+            value={{username}}
+          {{else}}
+            value=""
+          {{/if}}
+        />
+        <label for="email"> Username</label>
+      </div>
       <div class="form-floating mb-3">
         <input
           type="email"
@@ -9,7 +23,11 @@
           id="email"
           name="email"
           placeholder="name@example.com"
-          value=""
+          {{#if email}}
+            value={{email}}
+          {{else}}
+            value=""
+          {{/if}}
         />
         <label for="email">Email address</label>
       </div>
@@ -37,5 +55,12 @@
       </div>
       <input class="btn btn-primary" type="submit" value="Login" />
     </form>
+  </div>
+  <div>
+    <ul>
+      {{#each errors}}
+        <li>{{this}}</li>
+      {{/each}}
+    </ul>
   </div>
 </div>

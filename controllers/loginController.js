@@ -1,5 +1,5 @@
 var User = require("../models/user");
-const { body, validationResults } = require("express-validator");
+const { body, validationResult } = require("express-validator");
 
 exports.login_get = (req, res, next) => {
   try {
@@ -14,10 +14,12 @@ exports.login_post = [
   body("password").escape(),
 
   (req, res, next) => {
-    const errors = validationResults(req);
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
       // handle errors
       res.render("login", { email: req.body.email, errors: errors.array() });
+    } else {
+      // form data is good, log-in user
     }
     try {
       console.log(req.body.email);
