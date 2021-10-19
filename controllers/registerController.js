@@ -14,7 +14,7 @@ exports.register_post = [
   body("username")
     .escape()
     .custom((value) => {
-      return User.findOne({ username: value }).then((user) => {
+      return User.findOne({ username: value.toLowerCase() }).then((user) => {
         if (user) {
           return Promise.reject("Username is taken");
         }
@@ -28,7 +28,7 @@ exports.register_post = [
     .escape()
     .withMessage("Invalid Email")
     .custom((value) => {
-      return User.findOne({ email: value }).then((user) => {
+      return User.findOne({ email: value.toLowerCase() }).then((user) => {
         if (user) {
           return Promise.reject("Email is already in use");
         }
