@@ -30,6 +30,27 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// Session and Passport setup
+const session = require("express-session");
+const passport = require("passport");
+const sessionSecret = require("./config/keys").sessionSecret;
+
+// Passport config - pull in passport.js and call function with parameter passport
+require("./config/passport")(passport);
+
+// Express Session
+app.use(
+  session({
+    secret: sessionSecret,
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
