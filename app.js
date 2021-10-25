@@ -3,6 +3,7 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const flash = require("connect-flash");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -51,6 +52,17 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Connect-flash
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+  next();
+});
+
+// Routers
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 

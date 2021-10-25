@@ -14,28 +14,30 @@ exports.register_post = [
   body("username")
     .escape()
     .custom((value) => {
-      return User.findOne({ username: value.toLowerCase() }).then((user) => {
-        if (user) {
-          return Promise.reject("Username is taken");
-        }
-      });
-      // .catch((err) => {
-      //   throw new Error("Server error");
-      // });
+      return User.findOne({ username: value.toLowerCase() })
+        .then((user) => {
+          if (user) {
+            return Promise.reject("Username is taken");
+          }
+        })
+        .catch((err) => {
+          throw new Error("Server error. Please try again.");
+        });
     }),
   body("email")
     .isEmail()
     .escape()
     .withMessage("Invalid Email")
     .custom((value) => {
-      return User.findOne({ email: value.toLowerCase() }).then((user) => {
-        if (user) {
-          return Promise.reject("Email is already in use");
-        }
-      });
-      // .catch((err) => {
-      //   throw new Error("Server error");
-      // });
+      return User.findOne({ email: value.toLowerCase() })
+        .then((user) => {
+          if (user) {
+            return Promise.reject("Email is already in use");
+          }
+        })
+        .catch((err) => {
+          throw new Error("Server error. Please try again.");
+        });
     }),
   body("password")
     .escape()
@@ -74,6 +76,7 @@ exports.register_post = [
       user.save((err) => {
         if (err) return next(err);
       });
+      req.flash("success_msg", "Successfully signed up. You can now log in");
       res.redirect("login");
     }
   },
