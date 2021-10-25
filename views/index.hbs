@@ -5,7 +5,30 @@
   {{#each post_list}}
     <dt>{{this.title}}</dt>
     <dd>{{this.body}}</dd>
-    <dd>{{this.author.name}}</dd>
+    <dd>{{this.author.username}}</dd>
     <dd>{{this.date}}</dd>
   {{/each}}
 </dl>
+<div class="container">
+  {{#each post_list}}
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="..." class="img-fluid rounded-start" alt="..." />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{this.title}}</h5>
+            <p class="card-text">{{this.body}}</p>
+            <p class="card-text"><small
+                class="text-muted"
+              >{{this.date}}</small></p>
+            <p class="card-text"><small
+                class="text-muted"
+              >{{this.author.username}}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>
