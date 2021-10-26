@@ -20,6 +20,10 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  membership_status: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 userSchema.virtual("url").get(function () {

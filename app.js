@@ -61,12 +61,14 @@ app.use((req, res, next) => {
   res.locals.error_msg = req.flash("error_msg");
   res.locals.error = req.flash("error");
   res.locals.loggedIn = req.isAuthenticated();
+  res.locals.currentUserId = req.user ? req.user.url : "none";
   next();
 });
 
 // testing
 app.use((req, res, next) => {
   console.log("Logged in: " + req.isAuthenticated());
+  console.log("Current user id: " + res.locals.currentUserId);
   next();
 });
 
