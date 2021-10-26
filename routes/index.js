@@ -1,8 +1,9 @@
-var express = require("express");
-var router = express.Router();
-var post_controller = require("../controllers/postController");
-var login_controller = require("../controllers/loginController");
-var register_controller = require("../controllers/registerController");
+const express = require("express");
+const router = express.Router();
+const post_controller = require("../controllers/postController");
+const login_controller = require("../controllers/loginController");
+const logout_controller = require("../controllers/logoutController");
+const register_controller = require("../controllers/registerController");
 
 /* GET home page. */
 router.get("/", post_controller.index);
@@ -12,6 +13,9 @@ router.get("/login", login_controller.login_get);
 
 // POST login page
 router.post("/login", login_controller.login_post);
+
+// GET logout
+router.get("/logout", logout_controller.logout_get);
 
 // GET register page
 router.get("/register", register_controller.register_get);

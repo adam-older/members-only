@@ -28,14 +28,25 @@
           class="collapse navbar-collapse d-flex justify-content-end"
           id="navbarNav"
         >
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/register">Sign Up</a>
-            </li>
-          </ul>
+          {{#if loggedIn}}
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/#">My Account</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            </ul>
+          {{else}}
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/register">Sign Up</a>
+              </li>
+            </ul>
+          {{/if}}
         </div>
       </div>
     </nav>

@@ -55,10 +55,18 @@ app.use(passport.session());
 // Connect-flash
 app.use(flash());
 
+// global Express variables
 app.use((req, res, next) => {
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
   res.locals.error = req.flash("error");
+  res.locals.loggedIn = req.isAuthenticated();
+  next();
+});
+
+// testing
+app.use((req, res, next) => {
+  console.log("Logged in: " + req.isAuthenticated());
   next();
 });
 
