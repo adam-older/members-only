@@ -1,3 +1,4 @@
 node_modules/
 config/keys.js
 populatedb.js
+resetdb.js

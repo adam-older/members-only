@@ -40,6 +40,15 @@ exports.member_post = [
     const { passcode } = req.body;
     const correctPasscode = "secret";
     if (passcode === correctPasscode) {
+      User.updateOne(
+        { username: res.locals.currentUser.username },
+        { $set: { membership_status: true } }
+      )
+        .then(() => {
+          req.flash("success_msg", "Success, you are now a member");
+          res.redirect(res.locals.currentUser.url);
+        })
+        .catch((err) => next(err));
     } else {
       res.render("member", {
         error: ["The passcode you entered is incorrect"],
