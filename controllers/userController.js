@@ -13,3 +13,7 @@ exports.user_detail_get = async (req, res, next) => {
     return next(err);
   }
 };
+
+exports.member_get = (req, res, next) => {
+  res.render("member", {});
+};

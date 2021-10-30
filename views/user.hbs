@@ -3,4 +3,7 @@
   <div>{{username}}</div>
   <div>User since: {{creation_date}}</div>
   <div>Membership status: {{membership_status}}</div>
+  {{#if loggedIn}}
+    <div><a href="/member" class="btn btn-primary">Become a member</a></div>
+  {{/if}}
 </div>

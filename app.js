@@ -67,8 +67,9 @@ app.use((req, res, next) => {
 
 // testing
 app.use((req, res, next) => {
-  console.log("Logged in: " + req.isAuthenticated());
+  console.log("Logged in: " + res.locals.loggedIn);
   console.log("Current user id: " + res.locals.currentUserId);
+  // console.log(req.session);
   next();
 });
 
