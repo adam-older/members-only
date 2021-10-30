@@ -1,10 +1,12 @@
 <div class="container">
-  <h1>User:</h1>
+  <h1>Welcome</h1>
   <div>{{username}}</div>
   <div>User since: {{creation_date}}</div>
   <div>Membership status: {{membership_status}}</div>
-  {{!-- {{#if loggedIn}}
-    {{#if }}
+  {{#if membership_status}}
+    <div>You are a member!</div>
+  {{else}}
+    <div>You are not a member!</div>
     <div><a href="/member" class="btn btn-primary">Become a member</a></div>
-  {{/if}} --}}
+  {{/if}}
 </div>

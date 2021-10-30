@@ -61,14 +61,20 @@ app.use((req, res, next) => {
   res.locals.error_msg = req.flash("error_msg");
   res.locals.error = req.flash("error");
   res.locals.loggedIn = req.isAuthenticated();
-  res.locals.currentUserId = req.user ? req.user.url : "none";
+  // res.locals.isMember = req.user ? req.user.url : "none";
+  // res.locals.currentUserId = req.user ? req.user.url : "none";
+  res.locals.currentUser = req.user;
   next();
 });
 
 // testing
 app.use((req, res, next) => {
   console.log("Logged in: " + res.locals.loggedIn);
-  console.log("Current user id: " + res.locals.currentUserId);
+  // console.log("Current user id: " + res.locals.currentUserId);
+  if (res.locals.currentUser) {
+    console.log("Current user id: " + res.locals.currentUser.url);
+    // console.log(res.locals.currentUser);
+  }
   // console.log(req.session);
   next();
 });
