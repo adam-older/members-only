@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const { body } = require("express-validator");
 
 // exports.user_detail_get = async (req, res, next) => {
 //   try {
@@ -32,3 +33,17 @@ exports.user_detail_get = (req, res, next) => {
 exports.member_get = (req, res, next) => {
   res.render("member", {});
 };
+
+exports.member_post = [
+  body("passcode").escape(),
+  (req, res, next) => {
+    const { passcode } = req.body;
+    const correctPasscode = "secret";
+    if (passcode === correctPasscode) {
+    } else {
+      res.render("member", {
+        error: ["The passcode you entered is incorrect"],
+      });
+    }
+  },
+];

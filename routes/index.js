@@ -29,4 +29,7 @@ router.post("/register", register_controller.register_post);
 // GET become member page
 router.get("/member", ensureAuthenticated, userController.member_get);
 
+// POST become member page
+router.post("/member", ensureAuthenticated, userController.member_post);
+
 module.exports = router;

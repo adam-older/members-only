@@ -1,5 +1,6 @@
 <div class="container">
   <h1>Become a Member:</h1>
+  {{> error}}
   <p>Enter the secret passcode:</p>
     <div class="input-label" Login>
     <form method="POST" action="">
@@ -13,5 +14,6 @@
         />
         <label for="passcode">Secret Passcode:</label>
       </div>
+      <input class="btn btn-primary" type="submit" value="Submit" />
     </div>
 </div>

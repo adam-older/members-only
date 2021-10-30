@@ -61,7 +61,7 @@ exports.register_post = [
       res.render("register", {
         username: username,
         email: email,
-        errors: error_msgs,
+        error: error_msgs,
       });
     } else {
       var user = new User({
