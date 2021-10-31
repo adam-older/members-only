@@ -4,12 +4,25 @@ const post_controller = require("../controllers/postController");
 const login_controller = require("../controllers/loginController");
 const logout_controller = require("../controllers/logoutController");
 const register_controller = require("../controllers/registerController");
-const userController = require("../controllers/userController");
+const user_controller = require("../controllers/userController");
 
 const { ensureAuthenticated } = require("../config/auth");
 
 /* GET home page. */
 router.get("/", post_controller.index);
+
+// GET become member page
+router.get(
+  "/newpost",
+  ensureAuthenticated,
+  post_controller.create_new_post_get
+);
+// GET become member page
+router.post(
+  "/newpost",
+  ensureAuthenticated,
+  post_controller.create_new_post_post
+);
 
 // GET login page
 router.get("/login", login_controller.login_get);
@@ -27,9 +40,9 @@ router.get("/register", register_controller.register_get);
 router.post("/register", register_controller.register_post);
 
 // GET become member page
-router.get("/member", ensureAuthenticated, userController.member_get);
+router.get("/member", ensureAuthenticated, user_controller.member_get);
 
 // POST become member page
-router.post("/member", ensureAuthenticated, userController.member_post);
+router.post("/member", ensureAuthenticated, user_controller.member_post);
 
 module.exports = router;

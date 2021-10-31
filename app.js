@@ -68,7 +68,9 @@ app.use((req, res, next) => {
   res.locals.loggedIn = req.isAuthenticated();
   // res.locals.isMember = req.user ? req.user.url : "none";
   // res.locals.currentUserId = req.user ? req.user.url : "none";
-  res.locals.currentUser = req.user;
+  if (req.user) {
+    res.locals.currentUser = req.user;
+  }
   next();
 });
 
@@ -78,7 +80,7 @@ app.use((req, res, next) => {
   // console.log("Current user id: " + res.locals.currentUserId);
   if (res.locals.currentUser) {
     console.log("Current user id: " + res.locals.currentUser.url);
-    // console.log(res.locals.currentUser);
+    console.log(res.locals.currentUser);
   }
   // console.log(req.session);
   next();
