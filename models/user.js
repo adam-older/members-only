@@ -30,4 +30,14 @@ userSchema.virtual("url").get(function () {
   return "/users/" + this._id;
 });
 
+userSchema.virtual("formatted_creation_date").get(function () {
+  let options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  return this.creation_date.toLocaleDateString("en-US", options);
+});
+
 module.exports = mongoose.model("User", userSchema);

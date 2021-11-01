@@ -21,4 +21,14 @@ const postSchema = new mongoose.Schema({
   },
 });
 
+postSchema.virtual("formatted_date").get(function () {
+  let options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  return this.date.toLocaleDateString("en-US", options);
+});
+
 module.exports = mongoose.model("Post", postSchema);

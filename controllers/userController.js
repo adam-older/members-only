@@ -17,14 +17,22 @@ const { body } = require("express-validator");
 exports.user_detail_get = (req, res, next) => {
   User.findById(req.params.id)
     .then((user) => {
-      const { username, creation_date, membership_status, _id } = user;
+      const { username, formatted_creation_date, membership_status } = user;
       if (
         res.locals.currentUser &&
         username === res.locals.currentUser.username
       ) {
-        res.render("myaccount", { username, creation_date, membership_status });
+        res.render("myaccount", {
+          username,
+          formatted_creation_date,
+          membership_status,
+        });
       } else {
-        res.render("user", { username, creation_date, membership_status });
+        res.render("user", {
+          username,
+          formatted_creation_date,
+          membership_status,
+        });
       }
     })
     .catch((err) => next(err));
