@@ -1,8 +1,33 @@
-body {
+/* body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+} */
+
+.card {
+  border-radius: 1rem;
+  background-color: #d3d3d3;
+}
+
+.round-corner {
+  border-radius: 1rem;
+}
+
+.custom-card-text {
+  background-color: #808080;
+  float: right;
+}
+
+.corner-container {
+  float: right;
+}
+
+.corner-container div {
+  margin-bottom: 0.5rem;
+}
+.corner-container div:last-child {
+  margin-bottom: 0;
 }
