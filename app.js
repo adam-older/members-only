@@ -75,16 +75,16 @@ app.use((req, res, next) => {
 });
 
 // testing
-app.use((req, res, next) => {
-  console.log("Logged in: " + res.locals.loggedIn);
-  // console.log("Current user id: " + res.locals.currentUserId);
-  if (res.locals.currentUser) {
-    console.log("Current user id: " + res.locals.currentUser.url);
-    console.log(res.locals.currentUser);
-  }
-  // console.log(req.session);
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log("Logged in: " + res.locals.loggedIn);
+//   // console.log("Current user id: " + res.locals.currentUserId);
+//   if (res.locals.currentUser) {
+//     console.log("Current user id: " + res.locals.currentUser.url);
+//     console.log(res.locals.currentUser);
+//   }
+//   // console.log(req.session);
+//   next();
+// });
 
 // Routers
 app.use("/", indexRouter);
